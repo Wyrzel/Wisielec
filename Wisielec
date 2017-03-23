@@ -1,0 +1,54 @@
+package luzne;
+
+import java.util.Scanner;
+
+public class Wisielec {
+
+	public static void main(String[] args) {
+	
+		int win=0;
+		int lose=0;
+		boolean szybka=false;
+
+		String haslo ="ABCDE";
+	
+		char[] tab = haslo.toCharArray();
+		char[] help = new char[haslo.length()];
+		
+		for(int i=0;i<haslo.length();i++)
+			help[i]='_';
+	
+		while(win!=haslo.length()&&lose<2){
+		System.out.print("hasło: ");
+		for(int i=0;i<haslo.length();i++){
+			System.out.print(help[i]);
+			}
+			System.out.println("");
+			System.out.println("Podaj literę: ");
+		Scanner in=new Scanner(System.in);
+		char a= in.next().charAt(0);
+		
+		for(int i=0;i<haslo.length();i++)
+			if(a==tab[i]){
+				help[i]=a;
+				szybka=true;
+				win++;
+			}
+				
+		if(szybka!=true)
+			lose++;
+		
+		szybka=false;
+		
+		}
+	
+	if(win==haslo.length()){
+		System.out.println("BRAWO, hasło to: ");	
+		for(int i=0;i<haslo.length();i++)			
+			System.out.print(help[i]);		
+		}
+	if(lose==2)
+		System.out.println("WISISZ!");
+	}
+
+}
